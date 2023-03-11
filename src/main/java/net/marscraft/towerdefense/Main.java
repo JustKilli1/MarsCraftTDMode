@@ -2,6 +2,7 @@ package net.marscraft.towerdefense;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.marscraft.shared.database.MySQL;
 import net.marscraft.towerdefense.commands.GamemodeCommand;
 import net.marscraft.towerdefense.commands.TestCommand;
 import net.minestom.server.MinecraftServer;
@@ -39,5 +40,6 @@ public class Main {
         minecraftServer.start("0.0.0.0", 25565);
         MinecraftServer.getCommandManager().register(new TestCommand(instanceContainer));
         MinecraftServer.getCommandManager().register(new GamemodeCommand());
+        MySQL mySQL = new MySQL();
     }
 }
