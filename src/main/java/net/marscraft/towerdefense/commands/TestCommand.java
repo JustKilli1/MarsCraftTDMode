@@ -3,6 +3,7 @@ package net.marscraft.towerdefense.commands;
 import net.marscraft.towerdefense.entities.TestEntity;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.InstanceContainer;
 
 public class TestCommand extends Command {
@@ -27,7 +28,7 @@ public class TestCommand extends Command {
             sender.sendMessage("You typed the number " + number);
             for(int i = 0; i < number; i++) {
                 TestEntity entity = new TestEntity();
-                entity.setInstance(instanceContainer);
+                entity.setInstance(instanceContainer, new Pos(0D, 42D, 0D));
             }
         }, numberArgument);
 
