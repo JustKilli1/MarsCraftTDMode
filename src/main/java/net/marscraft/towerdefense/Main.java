@@ -1,5 +1,6 @@
 package net.marscraft.towerdefense;
 
+import net.marscraft.towerdefense.commands.GamemodeCommand;
 import net.marscraft.towerdefense.commands.TestCommand;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
@@ -30,6 +31,7 @@ public class Main {
         });
         // Start the server on port 25565
         minecraftServer.start("0.0.0.0", 25565);
-        MinecraftServer.getCommandManager().register(new TestCommand());
+        MinecraftServer.getCommandManager().register(new TestCommand(instanceContainer));
+        MinecraftServer.getCommandManager().register(new GamemodeCommand());
     }
 }

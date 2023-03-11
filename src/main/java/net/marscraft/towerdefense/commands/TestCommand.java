@@ -1,11 +1,13 @@
 package net.marscraft.towerdefense.commands;
 
+import net.marscraft.towerdefense.entities.TestEntity;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.instance.InstanceContainer;
 
 public class TestCommand extends Command {
 
-    public TestCommand() {
+    public TestCommand(InstanceContainer instanceContainer) {
         super("test", "t");
 
         setDefaultExecutor((sender, context) -> {
@@ -23,6 +25,10 @@ public class TestCommand extends Command {
         addSyntax((sender, context) -> {
             final int number = context.get(numberArgument);
             sender.sendMessage("You typed the number " + number);
+            for(int i = 0; i < number; i++) {
+                TestEntity entity = new TestEntity();
+                entity.setInstance(instanceContainer);
+            }
         }, numberArgument);
 
     }
