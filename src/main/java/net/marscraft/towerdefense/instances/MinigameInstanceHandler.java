@@ -1,5 +1,9 @@
 package net.marscraft.towerdefense.instances;
 
+import net.marscraft.general.logging.ILogger;
+import net.marscraft.general.logging.LogLevel;
+import net.marscraft.general.logging.files.FileHandler;
+import net.marscraft.general.logging.logger.BaseConsoleLogger;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.InstanceContainer;
 
@@ -9,10 +13,12 @@ import java.util.Optional;
 
 public class MinigameInstanceHandler {
 
+    private ILogger logger;
     private List<MinigameInstance> instances;
     private int instanceIdCounter;
 
     public MinigameInstanceHandler() {
+        logger = new BaseConsoleLogger("MinigameInstanceHandler");
         instances = new ArrayList<>();
         instanceIdCounter = 0;
         createFolderStructure();
@@ -22,22 +28,26 @@ public class MinigameInstanceHandler {
         instances.add(instance);
     }
 
-    public void addInstance(Player owner, InstanceContainer instance) {
-        addInstance(new MinigameInstance(getNextId(), owner, instance));
+    public MinigameInstance addInstance(Player owner, InstanceContainer instance) {
+        MinigameInstance minigameInstance = new MinigameInstance(getNextId(), owner, instance);
+        addInstance(minigameInstance);
+        return minigameInstance;
     }
     public void removeInstance(MinigameInstance instance) {
         instances.remove(instance);
     }
 
-    public void removeInstance(int id) {
+    public Optional<MinigameInstance> removeInstance(int id) {
         Optional<MinigameInstance> instance = getInstance(id);
-        if(instance.isEmpty()) return;
+        if(instance.isEmpty()) return instance;
         removeInstance(instance.get());
+        return instance;
     }
-    public void removeInstance(Player player) {
+    public Optional<MinigameInstance> removeInstance(Player player) {
         Optional<MinigameInstance> instance = getInstance(player);
-        if(instance.isEmpty()) return;
+        if(instance.isEmpty()) return instance;
         removeInstance(instance.get());
+        return instance;
     }
     public Optional<MinigameInstance> getInstance(int id) {
         for(MinigameInstance instance : instances)
@@ -58,7 +68,11 @@ public class MinigameInstanceHandler {
     }
 
     private void createFolderStructure() {
-/*        FileHandler fileHandler = new FileHandler("Instances/TowerDefense");
-        fileHandler.createFileWithDirectorys();*/
+        try {
+            FileHandler fileHandler = new FileHandler("Instances/TowerDefense");
+            fileHandler.createFileWithDirectorys();
+        } catch(Exception ex) {
+            logger.log(LogLevel.ERROR, "Could not create Minigame Instances Directory.", ex);
+        }
     }
 }
