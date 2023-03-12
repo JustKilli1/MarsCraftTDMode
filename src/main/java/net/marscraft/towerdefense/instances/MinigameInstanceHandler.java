@@ -7,6 +7,8 @@ import net.marscraft.general.logging.logger.BaseConsoleLogger;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.InstanceContainer;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,10 +71,9 @@ public class MinigameInstanceHandler {
 
     private void createFolderStructure() {
         try {
-            FileHandler fileHandler = new FileHandler("Instances/TowerDefense");
-            fileHandler.createFileWithDirectorys();
+            if(Files.createDirectories(Path.of("Instances/TowerDefense")) != null) logger.log(LogLevel.INFO, "Tower Defense Directory created.");
         } catch(Exception ex) {
-            logger.log(LogLevel.ERROR, "Could not create Minigame Instances Directory.", ex);
+            //Ignore
         }
     }
 }

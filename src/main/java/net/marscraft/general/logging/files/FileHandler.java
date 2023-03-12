@@ -1,10 +1,15 @@
 package net.marscraft.general.logging.files;
 
+import com.google.gson.annotations.Since;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * @deprecated
+ * @since 0.1.0-Development
+ * */
 public class FileHandler {
 
     private File file;
@@ -51,6 +56,7 @@ public class FileHandler {
      * */
     public boolean createFileWithDirectorys() throws IOException {
         createDirectorys();
+        if(file.isDirectory()) return true;
         return file.createNewFile();
     }
 

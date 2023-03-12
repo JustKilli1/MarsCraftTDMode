@@ -3,6 +3,7 @@ package net.marscraft.towerdefense;
 import net.marscraft.general.database.MySQL;
 import net.marscraft.towerdefense.commands.GamemodeCommand;
 import net.marscraft.towerdefense.commands.TestCommand;
+import net.marscraft.towerdefense.instances.MinigameInstanceHandler;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
@@ -35,5 +36,6 @@ public class Main {
         MinecraftServer.getCommandManager().register(new TestCommand(instanceContainer));
         MinecraftServer.getCommandManager().register(new GamemodeCommand());
         MySQL mySQL = new MySQL();
+        MinigameInstanceHandler minigameInstanceHandler = new MinigameInstanceHandler();
     }
 }
