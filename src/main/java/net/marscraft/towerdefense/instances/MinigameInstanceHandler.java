@@ -1,6 +1,5 @@
 package net.marscraft.towerdefense.instances;
 
-import net.marscraft.shared.files.FileHandler;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.InstanceContainer;
 

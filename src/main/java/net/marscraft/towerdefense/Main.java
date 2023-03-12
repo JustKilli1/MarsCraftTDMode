@@ -1,6 +1,6 @@
 package net.marscraft.towerdefense;
 
-import net.marscraft.shared.database.MySQL;
+import net.marscraft.general.database.MySQL;
 import net.marscraft.towerdefense.commands.GamemodeCommand;
 import net.marscraft.towerdefense.commands.TestCommand;
 import net.minestom.server.MinecraftServer;
