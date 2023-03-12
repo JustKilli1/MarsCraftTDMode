@@ -1,7 +1,6 @@
 package net.marscraft.shared.logging.type;
 
 import net.marscraft.shared.files.FileHandler;
-import net.marscraft.shared.logging.LogCategory;
 
 import java.util.Arrays;
 import java.util.List;

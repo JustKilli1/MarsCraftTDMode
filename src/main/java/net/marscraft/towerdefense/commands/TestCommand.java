@@ -4,6 +4,7 @@ import net.marscraft.towerdefense.entities.TestEntity;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Player;
 import net.minestom.server.instance.InstanceContainer;
 
 public class TestCommand extends Command {
@@ -29,6 +30,8 @@ public class TestCommand extends Command {
             for(int i = 0; i < number; i++) {
                 TestEntity entity = new TestEntity();
                 entity.setInstance(instanceContainer, new Pos(0D, 42D, 0D));
+                Player player = (Player) sender;
+
             }
         }, numberArgument);
 

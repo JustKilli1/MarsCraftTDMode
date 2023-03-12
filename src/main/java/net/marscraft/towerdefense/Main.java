@@ -1,17 +1,11 @@
 package net.marscraft.towerdefense;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import net.marscraft.shared.database.MySQL;
 import net.marscraft.towerdefense.commands.GamemodeCommand;
 import net.marscraft.towerdefense.commands.TestCommand;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.entity.EntityCreature;
-import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.Player;
-import net.minestom.server.entity.metadata.monster.skeleton.SkeletonMeta;
-import net.minestom.server.entity.metadata.other.BoatMeta;
 import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.instance.InstanceContainer;

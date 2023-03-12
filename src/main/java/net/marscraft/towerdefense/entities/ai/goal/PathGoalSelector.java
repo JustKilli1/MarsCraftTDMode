@@ -4,8 +4,6 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.entity.ai.GoalSelector;
-import net.minestom.server.entity.ai.goal.RandomStrollGoal;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,7 @@ public class PathGoalSelector extends GoalSelector {
 
     private long lastStroll;
 
-    public PathGoalSelector(@NotNull EntityCreature entityCreature) {
+    public PathGoalSelector(EntityCreature entityCreature) {
         super(entityCreature);
     }
 
@@ -49,7 +47,7 @@ public class PathGoalSelector extends GoalSelector {
         this.lastStroll = System.currentTimeMillis();
     }
 
-    private static @NotNull List<Vec> getNearbyBlocks(int radius) {
+    private static List<Vec> getNearbyBlocks(int radius) {
         List<Vec> blocks = new ArrayList<>();
         for (int x = -radius; x <= radius; x++) {
             for (int y = -radius; y <= radius; y++) {
