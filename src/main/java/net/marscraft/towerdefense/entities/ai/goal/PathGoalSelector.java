@@ -4,6 +4,9 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.entity.ai.GoalSelector;
+import net.minestom.server.instance.Instance;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.instance.block.Block;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +17,13 @@ public class PathGoalSelector extends GoalSelector {
 
     private static final long DELAY = 2500;
     private final Random random = new Random();
+    private List<Pos> path;
 
     private long lastStroll;
 
     public PathGoalSelector(EntityCreature entityCreature) {
         super(entityCreature);
+        path = new ArrayList<>();
     }
 
     @Override
@@ -58,4 +63,9 @@ public class PathGoalSelector extends GoalSelector {
         }
         return blocks;
     }
+
+    public void setPath(List<Pos> path) {
+        this.path = path;
+    }
+
 }

@@ -1,11 +1,14 @@
 package net.marscraft.general.logging.type;
 
+
 import net.marscraft.general.logging.LogCategory;
 import net.marscraft.general.logging.LogLevel;
 import net.marscraft.general.logging.LoggingUtils;
 import net.marscraft.general.logging.files.FileHandler;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,13 +57,42 @@ public class LoggerTypeFile {
      * @return Formatted LogMessage
      * {@link LogLevel}
      * */
-    public static String formatMessage(LogLevel logLevel, String loggerName, String message, Exception ex) {
-        String messageMSG = message == null ? "" : "\n" + message;
+    public static String formatMessage(LogLevel logLevel, String loggerName, List<String> message, Exception ex) {
+        String messageMSG = message == null ? "" : "\n" + getMessageStr(message);
         String exceptionMSG = ex == null ? "" : "\nException: " + LoggingUtils.getStackTraceAsStr(ex);
-        return "Level: " + logLevel.getName() + "\n" +
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return "----------------------[" + currentDateTime.format(formatter) + "]----------------------\n" +
+                "Level: " + logLevel.getName() + "\n" +
                 "Logger Name: " + loggerName +
                 messageMSG +
                 exceptionMSG;
+    }
+
+    /**
+     * Method for Logger to Format a File Log Message
+     * @param logLevel LogLevel
+     * @param loggerName Name of the calling logger
+     * @param message Custom Message
+     * @param ex occurring Exception
+     * @return Formatted LogMessage
+     * {@link LogLevel}
+     * */
+    public static String formatMessage(LogLevel logLevel, String loggerName, String message, Exception ex) {
+        return formatMessage(logLevel, loggerName, Arrays.asList(message), ex);
+    }
+
+    /**
+     * @return the given Messages List as one combined String with new line chars between the List entrys
+     * */
+    private static String getMessageStr(List<String> messages) {
+        String combined = "";
+        for(int i = 0; i < messages.size(); i++) {
+            String current = messages.get(i);
+            combined += current;
+            if(i + 1 != messages.size()) combined += "\n";
+        }
+        return combined;
     }
 
 }

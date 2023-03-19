@@ -3,8 +3,7 @@ package net.marscraft.general.logging;
 public enum LogCategory {
 
     SYSTEM("System"),
-    WORLD("World"),
-    PLAYER("Player"),
+    UI("UI"),
     OTHER("Other")
     ;
 

@@ -1,5 +1,6 @@
 package net.marscraft.general.logging.type;
 
+
 import net.marscraft.general.logging.LogLevel;
 import net.marscraft.general.logging.LoggingUtils;
 
@@ -9,17 +10,16 @@ import java.util.List;
 public class LoggerTypeConsole {
 
     /**
-     * Writes A LogMessage to a File
+     * Writes A LogMessage to the Console
      * @param message The Message that gets written to the File
-     * @see FileHandler
      * */
     public void logToConsole(List<String> message) {
         message.forEach(System.out::println);
     }
 
     /**
-     * Writes A LogMessage to a File
-     * @param message The Message that gets written to the File
+     * Writes A LogMessage to the Console
+     * @param message The Message that gets written to the Console
      * */
     public void logToConsole(String message) {
         logToConsole(Arrays.asList(message));
